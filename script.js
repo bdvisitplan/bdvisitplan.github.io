@@ -14,7 +14,7 @@ const DAYS=[
  s:[["08:15–08:30","Meet up at Hotel Crowne Plaza Airport","meet"],["08:30–10:00","Drive to Chittagong Denim Mills","travel"],["10:30–10:45","Refreshment break","meal"],["10:45–11:30","General discussion & company profile","meet"],["11:30–12:45","Factory round","factory"],["12:45–13:45","Lunch at Chittagong Denim Mills","meal"],["13:20–13:45","Prayer break","meet"],["13:45–15:30","Drive to Mayer Achol","travel"],["15:30–15:45","Refreshment break","meal"],["15:45–17:30","Visit at Mayer Achol","factory"],["17:30–18:30","Drive to dinner point","travel"],["18:30–20:30","Dinner","meal"],["20:30–21:30","Drive to Hotel Crowne Plaza","travel"]]}];
 
 const WX=[["MON 05","32° / 25°","Mostly sunny"],["TUE 06","32° / 24°","Mostly sunny"],["WED 07","32° / 24°","Sunny"],["THU 08","32° / 24°","Sunny periods"],["FRI 09","32° / 24°","Sunny spells"]];
-const CON=[["Mehtap Mir","Head of People Operations & Workplace","+8801322905275","Emergency"],["Sharmin Hasan Probha","Workplace Solutions Specialist","+8801313196069","Emergency"],["Mohammad Mridha","Workplace Solutions Specialist","+8801329709820","Emergency"],["Md. Saiful Islam","CR Lead, Climate"]];
+const CON=[["Mehtap Mir","Head of People Operations & Workplace","+8801322905275","Emergency"],["Md. Saiful Islam","Corporate Responsibility Lead, Climate","+880 1322-905272","Emergency"]];
 // ====== APP ======
 const $=s=>document.querySelector(s),ini=n=>n.split(" ").map(w=>w[0]).slice(0,2).join("");
 const KINDS={factory:"Factory / site",travel:"Travel",meal:"Break / meal",meet:"Meeting"};
