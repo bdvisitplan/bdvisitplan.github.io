@@ -30,7 +30,7 @@ async function show(i){
   <ul class="tl">${x.s.map(r=>`<li data-t="${r[2]}"><time>${r[0]}</time><span class="${r[2]=="factory"?"f":""}">${r[1]}</span></li>`).join("")}</ul></div>
   <div class="info"><div class="box"><h3>Lunch</h3><p>${x.lunch}</p></div><div class="box"><h3>Dinner</h3><p>${x.dinner}</p></div>
   <div class="box"><h3>Transport</h3><p>Dedicated cars from Hotel Crowne Plaza Dhaka Airport.</p></div></div></div>
-  <div class="pdf"><h3>Supplier one-pager</h3>${ok?`<div class="btns"><a class="btn" href="${u}" target="_blank" rel="noopener">Open PDF ↗</a><a class="btn ghost" href="${u}" download>Download</a></div><iframe class="frame" src="${u}#view=FitH" title="Day ${i+1} one-pager"></iframe>`:`<div class="na">📄 The Day ${i+1} one-pager will be available here soon.</div>`}</div>`;
+  <div class="pdf"><h3>Visiting Plant Details</h3>${ok?`<div class="btns"><a class="btn" href="${u}" target="_blank" rel="noopener">Open PDF ↗</a><a class="btn ghost" href="${u}" download>Download</a></div><iframe class="frame" src="${u}#view=FitH" title="Day ${i+1} one-pager"></iframe>`:`<div class="na">📄 The Day ${i+1} one-pager will be available here soon.</div>`}</div>`;
   history.replaceState(null,"","#day"+(i+1));
 }
 $("#tabs").onclick=e=>{const b=e.target.closest("button");if(b)show(+b.dataset.i).then(()=>$("#day").scrollIntoView({behavior:"smooth",block:"start"}))};
