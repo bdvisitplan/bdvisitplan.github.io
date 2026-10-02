@@ -12,31 +12,28 @@ const DAYS=[
  s:[["07:30–07:45","Meet up at Hotel Crowne Plaza Airport","meet"],["07:45–09:30","Drive to Graphics Textiles","travel"],["09:30–09:45","Refreshment break","meal"],["09:45–11:30","General discussion & company profile","meet"],["11:30–12:30","Factory round","factory"],["12:30–13:30","Lunch at Graphics Textiles","meal"],["13:30–14:30","Drive to Pakiza Knit Composite","travel"],["14:30–14:45","Refreshment break","meal"],["14:45–15:30","General discussion & company profile","meet"],["15:30–16:30","Factory round","factory"],["16:30–16:45","Refreshment break","meal"],["16:45–18:45","Drive to dinner point","travel"],["18:45–20:30","Dinner","meal"],["20:30–21:30","Drive to Hotel Crowne Plaza","travel"]]},
 {d:"Friday",date:"09 Oct 2026",pdf:"pdf/Day 05.pdf",sup:["Chittagong Denim Mills","Mayer Achol"],lunch:"Chittagong Denim Mills",dinner:"Hosted by Chittagong Denim Mills at Le Meridien Dhaka",
  s:[["08:15–08:30","Meet up at Hotel Crowne Plaza Airport","meet"],["08:30–10:00","Drive to Chittagong Denim Mills","travel"],["10:30–10:45","Refreshment break","meal"],["10:45–11:30","General discussion & company profile","meet"],["11:30–12:45","Factory round","factory"],["12:45–13:45","Lunch at Chittagong Denim Mills","meal"],["13:20–13:45","Prayer break","meet"],["13:45–15:30","Drive to Mayer Achol","travel"],["15:30–15:45","Refreshment break","meal"],["15:45–17:30","Visit at Mayer Achol","factory"],["17:30–18:30","Drive to dinner point","travel"],["18:30–20:30","Dinner","meal"],["20:30–21:30","Drive to Hotel Crowne Plaza","travel"]]}];
-
 const WX=[["MON 05","32° / 25°","Mostly sunny"],["TUE 06","32° / 24°","Mostly sunny"],["WED 07","32° / 24°","Sunny"],["THU 08","32° / 24°","Sunny periods"],["FRI 09","32° / 24°","Sunny spells"]];
-const CON=[["Mehtap Mir","Head of People Operations & Workplace","+8801322905275","Emergency"],["Md. Saiful Islam","Corporate Responsibility Lead, Climate","+880 1322-905272","Emergency"]];
+const CON=[["Mehtap Mir","Head of People Operations & Workplace","+8801322905275","Emergency"],["Md. Saiful Islam","CR Lead, Climate","+8801322905272","Emergency"]];
 // ====== APP ======
 const $=s=>document.querySelector(s),ini=n=>n.split(" ").map(w=>w[0]).slice(0,2).join("");
 const KINDS={factory:"Factory / site",travel:"Travel",meal:"Break / meal",meet:"Meeting"};
-$("#tabs").innerHTML=DAYS.map((x,i)=>`<button data-i="${i}">Day ${i+1} · ${x.date.slice(0,6)}</button>`).join("");
-$("#stats").innerHTML=[[5,"days"],[DAYS.reduce((a,x)=>a+x.sup.length,0),"sites"],[5,"visitors"]].map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
-$("#vgrid").innerHTML=VIS.map(v=>`<div class="p"><div class="av">${ini(v[0])}</div><b>${v[0]}</b><small>${v[1]}<br>${v[2]}</small></div>`).join("");
+$("#tabs").innerHTML=DAYS.map((x,i)=>`<button data-i="${i}"><b>Day ${String(i+1).padStart(2,"0")}</b><span>${x.d.slice(0,3)}, ${x.date.slice(0,6)}</span></button>`).join("");
 $("#wx").innerHTML=WX.map(w=>`<div><span>${w[0]}</span><b>${w[1]}</b><span>${w[2]}</span></div>`).join("");
 $("#cgrid").innerHTML=CON.map(c=>`<div class="p"><span class="tag">${c[3]}</span><b>${c[0]}</b><small>${c[1]}</small><br><a href="tel:${c[2]}">${c[2]}</a></div>`).join("");
 async function show(i){
-  i=Math.max(0,Math.min(DAYS.length-1,i|0));const x=DAYS[i];
-  document.querySelectorAll("#tabs button").forEach((b,k)=>{b.classList.toggle("on",k==i);if(k==i)b.scrollIntoView({inline:"center",block:"nearest"})});
-  let ok=true;if(location.protocol.startsWith("http")){try{ok=(await fetch(x.pdf,{method:"HEAD"})).ok}catch(e){ok=false}}
+  i=Math.max(0,Math.min(DAYS.length-1,i|0));const x=DAYS[i],u=encodeURI(x.pdf);
+  document.querySelectorAll("#tabs button").forEach((b,k)=>{b.classList.toggle("on",k==i);b.setAttribute("aria-pressed",k==i)});
+  let ok=true;if(location.protocol.startsWith("http")){try{ok=(await fetch(u,{method:"HEAD"})).ok}catch(e){ok=false}}
   $("#day").innerHTML=`<div class="dh"><div><p>Day ${i+1}</p><h2>${x.d}, ${x.date}</h2></div></div>
   <div class="chips">${x.sup.map(s=>`<span class="chip">🏭 ${s}</span>`).join("")}</div>
   <div class="cols"><div><div class="legend">${Object.entries(KINDS).map(([k,v])=>`<span><i style="background:${{factory:"var(--ac)",travel:"#2b8cff",meal:"#f59e0b",meet:"#a855f7"}[k]}"></i>${v}</span>`).join("")}</div>
   <ul class="tl">${x.s.map(r=>`<li data-t="${r[2]}"><time>${r[0]}</time><span class="${r[2]=="factory"?"f":""}">${r[1]}</span></li>`).join("")}</ul></div>
   <div class="info"><div class="box"><h3>Lunch</h3><p>${x.lunch}</p></div><div class="box"><h3>Dinner</h3><p>${x.dinner}</p></div>
   <div class="box"><h3>Transport</h3><p>Dedicated cars from Hotel Crowne Plaza Dhaka Airport.</p></div></div></div>
-  <div class="pdf"><h3>Supplier one-pager</h3>${ok?`<div class="btns"><a class="btn" href="${x.pdf}" target="_blank" rel="noopener">Open PDF ↗</a><a class="btn ghost" href="${x.pdf}" download>Download</a></div><iframe class="frame" src="${x.pdf}#view=FitH" title="Day ${i+1} one-pager"></iframe>`:`<div class="na">📄 The Day ${i+1} one-pager will be available here soon.</div>`}</div>`;
+  <div class="pdf"><h3>Supplier one-pager</h3>${ok?`<div class="btns"><a class="btn" href="${u}" target="_blank" rel="noopener">Open PDF ↗</a><a class="btn ghost" href="${u}" download>Download</a></div><iframe class="frame" src="${u}#view=FitH" title="Day ${i+1} one-pager"></iframe>`:`<div class="na">📄 The Day ${i+1} one-pager will be available here soon.</div>`}</div>`;
   history.replaceState(null,"","#day"+(i+1));
 }
-$("#tabs").onclick=e=>{const b=e.target.closest("button");if(b)show(+b.dataset.i)};
+$("#tabs").onclick=e=>{const b=e.target.closest("button");if(b)show(+b.dataset.i).then(()=>$("#day").scrollIntoView({behavior:"smooth",block:"start"}))};
 const th=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
 document.documentElement.dataset.theme=th;
 $("#theme").onclick=()=>{const n=document.documentElement.dataset.theme=="dark"?"light":"dark";document.documentElement.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(e){}};
