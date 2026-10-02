@@ -1,7 +1,7 @@
 // ====== EDIT HERE ======
 // pdf: path of each day's one-pager inside the /pdf folder (upload it with this exact name).
 const DAYS=[
-{d:"Monday",date:"05 Oct 2026",pdf:"pdf/Day_01_Azim___Son___Noman_Terry_Towel_One_Pager_Visit_Preparation_OG_Witt.pdf",
+{d:"Monday",date:"05 Oct 2026",pdf:"pdf/Day 01 Azim & Son & Noman Terry Towel_One Pager Visit Preparation OG_Witt.pdf",
  sup:["Azim & Son Unit-2 (Woven · FID)","Noman Terry Towel Mills (Woven · Mill)"],lunch:"Azim & Son Unit-2",dinner:"Free evening / rest day",
  s:[["08:00–08:30","Meet up at Hotel Crowne Plaza Dhaka Airport","meet"],["08:30–10:00","Drive to Azim & Son Unit-2","travel"],["10:00–10:15","Refreshment break","meal"],["10:15–11:00","General discussion & company profile","meet"],["11:00–12:30","Factory round","factory"],["12:30–13:30","Lunch at Azim & Son Unit-2","meal"],["13:30–14:30","Drive to Noman Terry Towel Mills","travel"],["14:30–14:45","Refreshment break","meal"],["14:45–15:30","General discussion & company profile","meet"],["15:30–16:45","Factory round","factory"],["16:45–17:00","Refreshment break","meal"],["17:00–18:45","Drive to Hotel Crowne Plaza","travel"]]},
 {d:"Tuesday",date:"06 Oct 2026",pdf:"pdf/Day_02_One_Pager.pdf",sup:["RGR Sweater","Knit Plus"],lunch:"Knit Plus",dinner:"Hosted by Knit Plus at Sheraton",
