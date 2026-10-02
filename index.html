@@ -11,7 +11,7 @@
 <body>
 <header class="top">
   <a class="brand" href="#top">OG <span>&</span> Witt · Bangladesh</a>
-  <nav id="tabs" aria-label="Visit days"></nav>
+  <nav aria-label="Sections"><a href="#top">Itinerary</a><a href="#weather">Weather</a><a href="#contacts">Contacts</a></nav>
   <button id="theme" aria-label="Toggle theme">◐</button>
 </header>
 <main id="top">
@@ -19,14 +19,11 @@
     <p class="eyebrow">Supplier Visit Programme</p>
     <h1>Bangladesh Visit<br><em>5 – 9 October 2026</em></h1>
     <p class="lead">Your day-by-day itinerary, with a one-page profile for every supplier you will meet.</p>
-    <div class="stats" id="stats"></div>
+    <div class="days" id="tabs" aria-label="Visit days"></div>
   </section>
 
   <section id="day" class="day" aria-live="polite"></section>
-
-  
-  <section class="block" id="weather"><h2>Weather outlook</h2><p class="muted">Hot, mostly sunny conditions expected all week.</p><div class="wx" id="wx"></div>
-    <ul class="tips"><li>Wear light, breathable clothing and use sun protection.</li><li>Closed-toe, slip-resistant footwear for factory rounds.</li><li>Stay hydrated and use the breaks between rounds.</li></ul></section>
+  <section class="block" id="weather"><h2>Weather outlook</h2><div class="wx" id="wx"></div></section>
   <section class="block" id="contacts"><h2>Support contacts</h2><div class="grid" id="cgrid"></div></section>
   <p class="disc">The schedule is tentative and may change due to road traffic, factory operations, weather or other logistics. Thank you for your flexibility.</p>
 </main>
